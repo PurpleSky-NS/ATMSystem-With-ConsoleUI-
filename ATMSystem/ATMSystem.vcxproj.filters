@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="头文件\UIFrame">
+      <UniqueIdentifier>{b3ab343c-9314-4562-99f7-dfcdf1a54f37}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\UIFrame\FrameBase">
+      <UniqueIdentifier>{88e78a70-f18f-4f7e-8c9f-9c3a8cda1e3e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\UIFrame\CustomUI">
+      <UniqueIdentifier>{e45fac2b-d1e5-48aa-a295-7a9370440f60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Surfaces">
+      <UniqueIdentifier>{f2707171-00cc-4ed9-a23d-c6c0f37c2925}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\BankSystem">
+      <UniqueIdentifier>{bbcb837c-6802-4335-a28c-88fdac107fab}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="UIFrame\FrameBase\Displayer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="UIFrame\FrameBase\FrameMain.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="UIFrame\FrameBase\Surface.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="UIFrame\FrameBase\SurfaceManager.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MainStart.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="BankSystem\Billing.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="BankSystem\User.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="BankSystem\UserManager.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="UIFrame\FrameBase\Displayer.h">
+      <Filter>头文件\UIFrame\FrameBase</Filter>
+    </ClInclude>
+    <ClInclude Include="UIFrame\FrameBase\Surface.h">
+      <Filter>头文件\UIFrame\FrameBase</Filter>
+    </ClInclude>
+    <ClInclude Include="UIFrame\FrameBase\SurfaceManager.h">
+      <Filter>头文件\UIFrame\FrameBase</Filter>
+    </ClInclude>
+    <ClInclude Include="UIFrame\FrameBase\UIComponent.h">
+      <Filter>头文件\UIFrame\FrameBase</Filter>
+    </ClInclude>
+    <ClInclude Include="UIFrame\CustomSurface\EditorSurface.h">
+      <Filter>头文件\UIFrame\CustomUI</Filter>
+    </ClInclude>
+    <ClInclude Include="UIFrame\CustomSurface\MenuSurface.h">
+      <Filter>头文件\UIFrame\CustomUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Surfaces\MainSurface.h">
+      <Filter>头文件\Surfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Surfaces\RegisterSurface.h">
+      <Filter>头文件\Surfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Surfaces\LoginSurface.h">
+      <Filter>头文件\Surfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Surfaces\WithdrawSurface.h">
+      <Filter>头文件\Surfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Surfaces\SaveSurface.h">
+      <Filter>头文件\Surfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Surfaces\QueryMoneySurface.h">
+      <Filter>头文件\Surfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Surfaces\CalculatorSurface.h">
+      <Filter>头文件\Surfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="BankSystem\Billing.h">
+      <Filter>头文件\BankSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="BankSystem\SimpleException.h">
+      <Filter>头文件\BankSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="BankSystem\User.h">
+      <Filter>头文件\BankSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="BankSystem\UserManager.h">
+      <Filter>头文件\BankSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="BankSystem\TimeUtil.h">
+      <Filter>头文件\BankSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="UIFrame\CustomSurface\TableSurface.h">
+      <Filter>头文件\UIFrame\CustomUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Surfaces\BillingSurface.h">
+      <Filter>头文件\Surfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="UIFrame\UIFrame.h">
+      <Filter>头文件\UIFrame</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
