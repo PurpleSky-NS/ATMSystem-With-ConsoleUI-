@@ -3,6 +3,12 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+#MyTestFileType
+*.lock
+*.user
+*.bill
+*.urs
+
 # User-specific files
 *.rsuser
 *.suo
