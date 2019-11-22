@@ -36,7 +36,7 @@ void User::TryUnlock() throw(FileOperationException, TooManyAttemptsException)
 		SaveUser();
 		return;
 	}
-	throw TooManyAttemptsException("你已被冻结，冻结时间为[" + TimeStr(lastTime) + "]");
+	throw TooManyAttemptsException("你已被冻结，剩余冻结时间为[" + DiffTimeStr((lastTime + 24 * 60 * 60) - curentTime) + "]");
 }
 bool User::TryLogin(const std::string& passWord) throw(FileOperationException, TooManyAttemptsException)
 {
