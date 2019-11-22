@@ -34,17 +34,17 @@ bool UserManager::CheckPassword(const std::string& password)
 	return mask == 15; //0b1111，满足数字&&字母&&下划线
 }
 
-bool UserManager::Login(const std::string& cardNum, const std::string& passWord) throw(User::TooManyAttemptsException, FileOperationException)
+unsigned UserManager::Login(const std::string& cardNum, const std::string& passWord) throw(User::TooManyAttemptsException, FileOperationException)
 {
 	auto fd = m_users.find(cardNum);
 	if (fd == m_users.end())
-		return false;
+		return TRY_LOCK_TIMES;
 	User* user = User::LoadUser(cardNum);
 	if (!user->TryLogin(passWord))//尝试登陆
-		return false;
+		return TRY_LOCK_TIMES - user->GetTryTimes();
 	Logout();//登出原用户
 	m_loginUser = user;
-	return true;
+	return 0;
 }
 
 void UserManager::Logout()

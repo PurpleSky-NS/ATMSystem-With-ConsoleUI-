@@ -40,9 +40,12 @@ private:
 	{
 		try
 		{
-			if (!UserManager::GetInstance().Login(datas.at("CardNum"), datas.at("Password")))
+			unsigned res = UserManager::GetInstance().Login(datas.at("CardNum"), datas.at("Password"));
+			if (res)
 			{
-				cp.DisplayError("密码错误，请重试");
+				std::stringstream ss;
+				ss << "密码错误，剩余" << res << "次重试机会，失败将会冻结一天";
+				cp.DisplayError(ss.str());
 				return false;
 			}
 		}

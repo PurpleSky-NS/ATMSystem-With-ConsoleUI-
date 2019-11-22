@@ -31,8 +31,8 @@ public:
 	/*检查密码是否符合标准*/
 	static bool CheckPassword(const std::string& password);
 
-	/*登陆，会抛出TooManyAttemptsException异常*/
-	bool Login(const std::string& cardNum, const std::string& passWord) throw(User::TooManyAttemptsException, FileOperationException);
+	/*登陆，返回剩余几次机会，若为0则代表登陆成功，会抛出TooManyAttemptsException异常*/
+	unsigned Login(const std::string& cardNum, const std::string& passWord) throw(User::TooManyAttemptsException, FileOperationException);
 
 	/*登出并保存用户信息*/
 	void Logout();
