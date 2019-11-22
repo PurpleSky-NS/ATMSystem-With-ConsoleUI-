@@ -17,7 +17,7 @@ bool UserManager::CheckCardNum(const std::string& cardNum)
 
 bool UserManager::CheckPassword(const std::string& password)
 {
-	if (password.size() < 4) //密码最低4位
+	if (password.size() < 8) //密码最低8位
 		return false;
 	unsigned char mask = 0;
 	for (size_t i = 0; i < password.size(); ++i)
