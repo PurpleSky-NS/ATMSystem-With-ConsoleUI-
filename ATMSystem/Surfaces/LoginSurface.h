@@ -25,7 +25,7 @@ public:
 				}
 				return true;
 			});
-		AddEditableData("Password", "密码", "密码最低8位，必须包含：数字、字母、下划线，且倒数第三位必须是‘@’字符",
+		AddEditableData("Password", "密码", "",
 			[](char c) {
 				return isalnum((unsigned char)c) || c == '_' || c == '@';
 			}, [&](std::string& input, std::string& errMsg) {

@@ -15,7 +15,7 @@ public:
 			}, [](std::string& input, std::string& errMsg) {
 				if (!UserManager::CheckCardNum(input))
 				{
-					errMsg = "卡号不符合规范";
+					errMsg = "卡号	不符合规范";
 					return false;
 				}
 				if (UserManager::GetInstance().ExistUser(input))

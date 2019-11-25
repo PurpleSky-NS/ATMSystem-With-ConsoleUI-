@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 #include <fstream>
-#include <unordered_set>
+#include <unordered_map>
 #include "SimpleException.h"
 #include "User.h"
 
@@ -55,12 +55,13 @@ public:
 private:
 	static UserManager instance;
 
-	std::unordered_set<std::string> m_users;
+	std::unordered_map<std::string, User*> m_users;
 	User* m_loginUser = nullptr;
 
 	UserManager();
 	UserManager(const UserManager&) = delete;
 	UserManager(UserManager&&) = delete;
+	~UserManager();
 
 	/*检查用户是否合法*/
 	static bool Check(const User& user);

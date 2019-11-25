@@ -22,7 +22,7 @@ public:
 	};
 
 	/*加载用户*/
-	static User* LoadUser(const std::string& cardNum) throw(FileOperationException);
+	static User* LoadUser(std::istream& fi);
 
 	/*会抛出TooManyAttemptsException异常，试过多次之后，每次都会抛出该异常，密码正确会清除计数*/
 	bool TryLogin(const std::string& passWord) throw(FileOperationException, TooManyAttemptsException);
@@ -42,6 +42,9 @@ public:
 	inline const Billing& GetBilling()const;
 
 	/*存储用户信息*/
+	void SaveUser(std::ostream& fo)const;
+
+	/*存储已存在用户信息，如果没有，存到最后*/
 	void SaveUser()const throw(FileOperationException);
 
 private:

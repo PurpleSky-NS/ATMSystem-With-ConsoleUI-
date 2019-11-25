@@ -78,28 +78,53 @@ bool User::SaveMoney(double v)
 	return true;
 }
 
-User* User::LoadUser(const std::string& cardNum)throw(FileOperationException)
+User* User::LoadUser(std::istream& fi)
 {
-	std::ifstream uf(cardNum + ".user");
-	if (!uf.is_open())
-		throw FileOperationException(cardNum + ".user 文件打开失败，无法读取该文件");
-	std::string passWord;
+	std::string cardNum, passWord, buf;
 	double money;
 	unsigned short tryTimes;
-	uf >> passWord >> money >> tryTimes;
-	uf.close();
-	if (passWord.empty())
-		throw FileOperationException(cardNum + ".user 文件数据损坏");
-	return new User(cardNum, passWord, money, tryTimes);
+	fi >> cardNum >> passWord;
+	fi.get();
+	fi.read((char*)& money, sizeof(money));
+	fi.read((char*)& tryTimes, sizeof(tryTimes));
+	if (!cardNum.empty() && !passWord.empty())
+		return new User(cardNum, passWord, money, tryTimes);
+	return nullptr;
+}
+
+void User::SaveUser(std::ostream& fo) const
+{
+	fo << m_cardNum << ' ' << m_passWord << ' ';
+	fo.write((const char*)& m_money, sizeof(m_money));
+	fo.write((const char*)& m_tryTimes, sizeof(m_tryTimes));
+	fo << std::endl;
 }
 
 void User::SaveUser() const throw(FileOperationException)
 {
-	std::ofstream uf(m_cardNum + ".user");
-	if (!uf.is_open())
-		throw FileOperationException(m_cardNum + ".user 文件打开失败，无法写入该文件");
-	uf << m_passWord << std::endl
-		<< m_money << std::endl
-		<< m_tryTimes;
-	uf.close();
+	bool isFound = false;
+	std::fstream usrFile("users.usr", std::ios::in | std::ios::out | std::ios::binary);
+	if (!usrFile.is_open())
+		throw FileOperationException("users.usr 文件无法打开并且无法创建");
+	std::string card, passwrod;
+	while (usrFile >> card >> passwrod) //线性查找自己的数据段
+	{
+		usrFile.get(); //跳空格
+		if (card == m_cardNum) //找到了就写
+		{
+			usrFile.seekp(usrFile.tellg(), std::ios::beg);
+			usrFile.write((const char*)& m_money, sizeof(m_money));
+			usrFile.write((const char*)& m_tryTimes, sizeof(m_tryTimes));
+			isFound = true;
+			break;
+		}
+		else
+			usrFile.seekg(sizeof(m_money) + sizeof(m_tryTimes), std::ios::cur);
+	}
+	if (!isFound)
+	{
+		usrFile.seekp(0, std::ios::end);
+		SaveUser(usrFile);
+	}
+	usrFile.close();
 }

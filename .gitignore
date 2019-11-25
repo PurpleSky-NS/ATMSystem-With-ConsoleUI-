@@ -5,9 +5,8 @@
 
 #MyTestFileType
 *.lock
-*.user
-*.bill
-*.urs
+*bills.bill
+*users.usr
 
 # User-specific files
 *.rsuser
