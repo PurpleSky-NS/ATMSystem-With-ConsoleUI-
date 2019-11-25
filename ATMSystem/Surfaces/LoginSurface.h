@@ -23,13 +23,18 @@ public:
 					errMsg = "用户不存在";
 					return false;
 				}
+				if (!UserManager::GetInstance().IsLogin() && UserManager::GetInstance().GetLoginUser().GetCardNum() == input)
+				{
+					errMsg = "用户已登录";
+					return false;
+				}
 				return true;
 			});
 		AddEditableData("Password", "密码", "",
 			[](char c) {
 				return isalnum((unsigned char)c) || c == '_' || c == '@';
 			}, [&](std::string& input, std::string& errMsg) {
-				if (UserManager::CheckPassword(input))
+				if (!input.empty() && UserManager::CheckPassword(input))
 					return true;
 				errMsg = "密码不符合规范";
 				return false;
@@ -51,7 +56,7 @@ private:
 		}
 		catch (User::TooManyAttemptsException e)
 		{
-			cp.DisplayError("尝试次数过多，将冻结一天:" + std::string(e.what()));
+			cp.DisplayError("账号冻结:" + std::string(e.what()));
 			return false;
 		}
 		catch (FileOperationException e)

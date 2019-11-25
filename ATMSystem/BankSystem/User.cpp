@@ -1,10 +1,7 @@
 ﻿#include "User.h"
 User::User(const std::string& cardNum, const std::string& passWord, double money, unsigned short tryTimes) :
 	m_cardNum(cardNum), m_passWord(passWord), m_money(money), m_tryTimes(tryTimes), m_billing(cardNum)
-{
-	if (m_tryTimes == TRY_LOCK_TIMES) //如果已经上锁，看看时间是否足够解锁
-		TryUnlock();
-}
+{}
 void User::Lock() throw(FileOperationException, TooManyAttemptsException)
 {
 	if (m_tryTimes < TRY_LOCK_TIMES) //只有尝试次数到达上限才上锁
