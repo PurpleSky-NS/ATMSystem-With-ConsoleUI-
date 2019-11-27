@@ -40,7 +40,7 @@ public:
 			[](char c) {
 				return isalnum((unsigned char)c) || c == '_' || c == '@';
 			}, [&](std::string& input, std::string& errMsg) {
-				if (GetInputData("Password") == input)
+					if (GetInputData("Password") == input)
 					return true;
 				errMsg = "两次密码输入不一致";
 				return false;
