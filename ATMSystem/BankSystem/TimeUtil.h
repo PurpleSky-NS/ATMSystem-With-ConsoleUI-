@@ -41,12 +41,12 @@ inline std::string DiffTimeStr(time_t time)
 	}
 	if (time > hour)
 	{
-		hourDiff = time / hour;
+		hourDiff = (unsigned char)(time / hour);
 		time -= hourDiff * hour;
 	}
 	if (time > minute)
 	{
-		minuteDiff = time / minute;
+		minuteDiff = (unsigned char)(time / minute);
 		time -= minuteDiff * minute;
 	}
 	std::stringstream ss;
