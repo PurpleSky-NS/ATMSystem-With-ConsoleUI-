@@ -58,7 +58,7 @@ private:
 			cp.DisplayError("存入失败");
 		else
 		{
-			ss << "您已存入" << v << "元";
+			ss << "您已存入" << std::fixed << std::setprecision(2) << v << "元";
 			cp.DisplayOK(ss.str());
 		}
 		return false;

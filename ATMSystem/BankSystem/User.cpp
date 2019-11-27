@@ -28,8 +28,8 @@ void User::TryUnlock() throw(FileOperationException, TooManyAttemptsException)
 	lockFileIn.close();
 	if (curentTime - lastTime > 24 * 60 * 60) //如果时间大于一天，解锁
 	{
+		remove(std::string(m_cardNum + ".lock").c_str());
 		m_tryTimes = 0;
-		std::ofstream(m_cardNum + ".lock");//截断文件
 		SaveUser();
 		return;
 	}

@@ -14,7 +14,7 @@ public:
 		m_out(out) {}
 
 	template<class T>
-	/*输出到ostream流中，可以是数据(ostream支持的)，也可以是flags(如std::fixed,std::setw等)*/
+	/* 直接输出到ostream流中，可以是数据(ostream支持的)，也可以是flags(如std::fixed,std::setw等)*/
 	inline Displayer& Display(const T& content);
 
 	/* 显示指定位数的小数，@std::fixed @std::setprecision */
@@ -51,10 +51,10 @@ public:
 	template<class T>
 	inline Displayer& DisplayError(const T& content);
 
-	/*设置ios::flags @ostream::setf(std flag[eg.std::ios::scientific])*/
+	/* 设置ios::flags @ostream::setf(std flag[eg.std::ios::scientific])*/
 	inline Displayer& DisplayIOSFlag(std::ios::fmtflags mask);
 
-	/*取消ios::flags @ostream::unsetf(std flag[eg.std::ios::scientific])*/
+	/* 取消ios::flags @ostream::unsetf(std flag[eg.std::ios::scientific])*/
 	inline Displayer& UnDisplayIOSFlag(std::ios::fmtflags mask);
 
 	void Flush();
@@ -162,6 +162,6 @@ inline Displayer& Displayer::DisplayIOSFlag(std::ios::fmtflags mask)
 
 inline Displayer& Displayer::UnDisplayIOSFlag(std::ios::fmtflags mask)
 {
-	m_buf.setf(mask);
+	m_buf.unsetf(mask);
 	return *this;
 }

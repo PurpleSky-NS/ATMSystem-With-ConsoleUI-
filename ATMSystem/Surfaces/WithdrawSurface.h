@@ -82,8 +82,8 @@ public:
 			cp.DisplayError("你的余额不足");
 		else
 		{
-			std::stringstream ss;
-			ss << "您已取出" << v << "元";
+			std::ostringstream ss;
+			ss << std::fixed << std::setprecision(2) << "您已取出" << v << "元";
 			cp.DisplayOK(ss.str());
 		}
 		if (isRefresh)

@@ -23,7 +23,7 @@ public:
 					errMsg = "用户不存在";
 					return false;
 				}
-				if (!UserManager::GetInstance().IsLogin() && UserManager::GetInstance().GetLoginUser().GetCardNum() == input)
+				if (UserManager::GetInstance().IsLogin() && UserManager::GetInstance().GetLoginUser().GetCardNum() == input)
 				{
 					errMsg = "用户已登录";
 					return false;
