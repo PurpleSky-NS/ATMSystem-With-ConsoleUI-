@@ -85,36 +85,19 @@ private:
 				if (num2[0] == '-') //num2是负数
 				{
 					num2 = num2.substr(1);
-					int res = TestBigger(num1, num2);
-					if (res == 0)
-						m_result = "0";
-					else if (res > 0) //第一个大
-						m_result = "-" + CalculateBase(num1, num2, false);//-52-(-2)=-(52-2)=-50
-					else
-						m_result = CalculateBase(num2, num1, false); //-2-(-50)=50-2=48
+					m_result = CalculateSub(num2, num1, false);//-l-(-r)->r-l
 				}
 				else //num2是正数
-				{
-					//-52-5=-(52+5)=-57
-					m_result = "-" + CalculateBase(num1, num2, true);
-				}
+					m_result = CalculateAdd(num1, num2, true);//-l-r->-(r+l)
 			}
 			else //num1是正数
 				if (num2[0] == '-') //num2是负数
 				{
 					num2 = num2.substr(1);
-					m_result = CalculateBase(num1, num2, true); //5-(-5)=5+5
+					m_result = CalculateAdd(num1, num2, false);//(l-(-r))->l+r
 				}
 				else //num2是正数
-				{
-					int res = TestBigger(num1, num2);
-					if (res == 0)
-						m_result = "0";
-					else if (res > 0) //第一个大
-						m_result = CalculateBase(num1, num2, false);//6-5
-					else
-						m_result = "-" + CalculateBase(num2, num1, false); //5-6=-(6-5)
-				}
+					m_result = CalculateSub(num1, num2, false);//-l+r->r-l
 		}
 		else //+
 		{
@@ -124,33 +107,19 @@ private:
 				if (num2[0] == '-') //num2是负数
 				{
 					num2 = num2.substr(1);
-					m_result = "-" + CalculateBase(num1, num2, true); //-2+(-4)=-(2+4)
+					m_result = CalculateAdd(num1, num2, true);//-l+(-r)->-(l+r)
 				}
 				else //num2是正数
-				{
-					int res = TestBigger(num1, num2);
-					if (res == 0)
-						m_result = "0";
-					else if (res > 0) //第一个大
-						m_result = "-" + CalculateBase(num1, num2, false);//-52+5=-(52-5)
-					else
-						m_result = CalculateBase(num2, num1, false); //-2+50=50-2
-				}
+					m_result = CalculateSub(num2, num1, false);//-l+r->r-l
 			}
 			else //num1是正数
 				if (num2[0] == '-') //num2是负数
 				{
 					num2 = num2.substr(1);
-					int res = TestBigger(num1, num2);
-					if (res == 0)
-						m_result = "0";
-					else if (res > 0) //第一个大
-						m_result = CalculateBase(num1, num2, false);//25-5
-					else
-						m_result = "-" + CalculateBase(num2, num1, false); //5-25=-(25-5)
+					m_result = CalculateSub(num1, num2, false);//l-r
 				}
 				else //num2是正数
-					m_result = CalculateBase(num1, num2, true); //1+1
+					m_result = CalculateAdd(num1, num2, false); //l+r
 		}
 		return false;
 	}
@@ -203,6 +172,21 @@ private:
 			if (test[i] != other[i])
 				return (int)test[i] - (int)other[i];
 		return 0;
+	}
+
+	std::string CalculateAdd(const std::string& left, const std::string& right, bool isNeg)
+	{
+		return (isNeg ? "-" : "") + (TestBigger(left, right) > 0 ? CalculateBase(left, right, true) : CalculateBase(right, left, true));
+	}
+
+	std::string CalculateSub(const std::string& left, const std::string& right, bool isNeg)
+	{
+		int res = TestBigger(left, right);
+		if (res == 0)
+			return "0";
+		else if (res > 0) //第一个大
+			return (isNeg ? "-" : "") + CalculateBase(left, right, false);//45-5
+		return (isNeg ? "" : "-") + CalculateBase(right, left, false); //5-6=-(6-5)
 	}
 
 };
