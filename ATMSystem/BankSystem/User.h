@@ -3,6 +3,7 @@
 #include <stdexcept>
 #include <string>
 #include <fstream>
+#include <cmath>
 #include "Billing.h"
 #include "TimeUtil.h"
 #include "SimpleException.h"

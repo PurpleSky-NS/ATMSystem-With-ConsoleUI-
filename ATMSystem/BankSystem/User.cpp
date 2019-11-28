@@ -57,9 +57,10 @@ bool User::TryLogin(const std::string& passWord) throw(FileOperationException, T
 
 bool User::WithdrawMoney(double v)
 {
-	if (m_money - v < 0)
+	if (floor((m_money - v + 0.005) * 100) < 0) //两位小数精度
 		return false;
 	m_money -= v;
+	m_money = (m_money < 0 ? 0 : m_money); //两位小数精度
 	m_billing.Add({ Billing::Withdraw,CurrentTimeStape(),v ,m_money });
 	SaveUser();
 	return true;
